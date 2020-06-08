@@ -1,0 +1,85 @@
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.lang.ProcessBuilder;
+import java.io.IOException;
+
+
+public class Hanah {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try
+		{
+			
+		// 실행할 프로그램 기술
+		String cmd = ".\\SIGNAGE.EXE";
+		Process p2 = Runtime.getRuntime().exec(cmd);
+
+		// 외부실행프로그램에 input으로 들어갈 파일 내용
+		String fileInput = ".\\test.txt";
+
+		BufferedWriter bufferedwriter = new BufferedWriter(new OutputStreamWriter(p2.getOutputStream()));
+
+		BufferedReader br = new BufferedReader(new FileReader(fileInput));
+		String s = br.readLine();
+		while (s != null)
+		{
+		    bufferedwriter.write(s);
+		    s = br.readLine();
+		}
+		bufferedwriter.flush();
+		}
+		catch ( IOException ioe )
+		{
+			System.out.println(ioe);
+		}
+		/*
+		int bigsum = 0;
+		
+		for ( int i = 1 ; i < 200 ; i++ )
+		{
+			
+			String compare = Integer.toString(i);
+			int count = 0;
+			
+			if ( compare.contains("1") == true )
+			{
+				System.out.println( compare + "에 1이 포함이 되어있네" );
+				int smallcount = 0;
+				for ( int j = 0 ; j < compare.length() ; j++ )
+				{
+					
+					if ( compare.charAt(j) == '1' )
+					{
+						
+						smallcount = smallcount + 1;
+						System.out.println( j+1 + "째 자리에 1이 포함되어 있네요" + "누적 포함 횟수는 "+smallcount +"회" );
+						
+					}
+					
+				}
+				
+				
+				bigsum = bigsum + smallcount;
+				System.out.println( "현재까지 1의 갯수" + bigsum );
+				System.out.println( );
+				
+			}
+			
+			
+		}
+		System.out.println( "1에서 199까지 1의 갯수" + bigsum );
+	}
+	*/
+
+  }
+}
